@@ -46,9 +46,18 @@ export default function Board() {
     setXIsNext(!xIsNext)
   }
 
+  const winner = calculateWinner(square);
+  let status;
+  if (winner) {
+    status = "Winner: " + winner;
+  } else {
+    status = "Next player: " + (xIsNext ? "X" : "O");
+  }
+
   // Can optimize by using CSS instead of div and for-loop
   return (
     <>
+      <div className="status">{status}</div>
       <div className="board-row">
         <Square value={square[0]} onSquareClick={() => handleClick(0)} />
         <Square value={square[1]} onSquareClick={() => handleClick(1)} />
