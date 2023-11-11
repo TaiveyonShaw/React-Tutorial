@@ -31,6 +31,7 @@ function Board({xIsNext, squares, onPlay}) {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
 
+
   // Can optimize by using CSS instead of div and for-loop
   return (
     <>
@@ -70,17 +71,22 @@ export default function Game() {
     setCurrentMove(nextMove)
   }
 
+  // Challenge #1
   const moves = history.map((squares, move) => {
     let description
     if (move > 0) {
-      description = 'Go to move #' + move
+      description = 'You are on move #' + move
     }
     else {
-      description = 'Go to game start'
+      description = 'Game Start'
     }
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{description}</button>
+          {move === currentMove ? (
+              <>You are at move #{move}</>
+          ) : (
+              <button onClick={() => jumpTo(move)}>{description}</button>
+          )}
       </li>
     )
   })
