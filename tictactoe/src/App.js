@@ -66,6 +66,7 @@ export default function Game() {
   const [ascending, setAscending] = useState(true);
   const displayOrder = ascending ? "Ascending" : "Descending"
 
+  // Challenge #3
   function toggleDisplayOrder() {
     setAscending(!ascending);
   }
